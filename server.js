@@ -38,10 +38,88 @@ app.post('/send-invite', async (req, res) => {
             To:   [{ Email: email }],
             Subject: 'Shiftly Account Invitation',
             HTMLPart: `
-              <p>Hello,</p>
-              <p>Please click the link below to set up your account:</p>
-              <p><a href="${link}">${link}</a></p>
-              <p>If you didn’t request this, you can safely ignore this email.</p>
+              <!DOCTYPE html>
+              <html lang="en">
+              <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Welcome to Shiftly!</title>
+                <style>
+                  body {
+                    margin: 0;
+                    padding: 0;
+                    background: #fff;
+                    font-family: 'Segoe UI', Arial, sans-serif;
+                    color: #222;
+                  }
+                  .container {
+                    max-width: 480px;
+                    margin: 0 auto;
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                    padding: 32px 20px 24px 20px;
+                  }
+                  .title {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-bottom: 18px;
+                  }
+                  .desc {
+                    font-size: 1.05rem;
+                    text-align: center;
+                    margin-bottom: 28px;
+                  }
+                  .button {
+                    display: block;
+                    width: 200px;
+                    margin: 0 auto 28px auto;
+                    padding: 12px 0;
+                    background: #1673ff;
+                    color: #fff !important;
+                    text-align: center;
+                    border-radius: 6px;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                  }
+                  .footer {
+                    font-size: 0.95rem;
+                    color: #666;
+                    text-align: center;
+                    margin-top: 18px;
+                  }
+                  .small {
+                    font-size: 0.85rem;
+                    color: #aaa;
+                    text-align: center;
+                    margin-top: 18px;
+                  }
+                  @media (max-width: 600px) {
+                    .container {
+                      padding: 16px 4vw 16px 4vw;
+                    }
+                    .title {
+                      font-size: 1.2rem;
+                    }
+                    .button {
+                      width: 100%;
+                      font-size: 1rem;
+                    }
+                  }
+                </style>
+              </head>
+              <body>
+                <div class="container">
+                  <div class="title">Welcome to Shiftly!</div>
+                  <div class="desc">Hi, you've been added to Shiftly by your manager. To get started, please click the button below to set up your account.</div>
+                  <a href="${link}" class="button">Set Up Account</a>
+                  <div class="footer">If you have any questions, please contact your manager or the Shiftly support team.</div>
+                  <div class="small">This email was sent from Shiftly. You can manage your email preferences in your account settings.</div>
+                </div>
+              </body>
+              </html>
             `,
           },
         ],
